@@ -1,5 +1,7 @@
 # todos
 
+<img src="https://user-images.githubusercontent.com/33117554/107792784-e044e480-6d98-11eb-8887-3b75dddc4dda.png">
+
 ## Project setup
 ```
 npm install
