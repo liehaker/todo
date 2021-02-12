@@ -1,19 +1,10 @@
 <template>
   <div id="app">
     <p class="ex1">Work's list</p>
-    <Header
-      @typing-todo="IputTyping"
-      @input-add="addTodo"
-      @reset-todo="Reset"
-    />
+    <Header @typing-todo="IputTyping" />
     <hr />
-    <Preview :preText="preText" />
-    <p></p>
-    <Todolist
-      :contents="contents"
-      @todo-Del="todoDel"
-      @todo-checked="todoChecked"
-    />
+    <Preview />
+    <Todolist />
   </div>
 </template>
 
@@ -31,49 +22,17 @@ export default {
   },
   data() {
     return {
-      contents: [
-        {
-          id: 1,
-          title: "할일",
-          checked: false,
-        },
-      ],
       preText: "",
     };
+  },
+  computed: {
+    contents() {
+      return this.$Store.state.contents;
+    },
   },
   methods: {
     IputTyping(v) {
       this.preText = v;
-    },
-
-    addTodo(v) {
-      console.log("APP", v);
-
-      this.contents.push({
-        id: Math.random(),
-        title: v,
-        checked: false,
-      });
-
-      console.log("APP", v);
-    },
-    todoDel(id) {
-      console.log("app", id);
-      const index = this.contents.findIndex((content) => {
-        return content.id === id;
-      });
-      if (index != -1) {
-        this.contents.splice(index, 1);
-      }
-    },
-    todoChecked({ id, checked }) {
-      const index = this.contents.findIndex((i) => {
-        return i.id === id;
-      });
-      if (index != -1) this.contents[index].checked = !checked;
-    },
-    Reset() {
-      this.contents.splice(0);
     },
   },
 };

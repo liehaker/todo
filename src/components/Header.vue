@@ -23,7 +23,9 @@ export default {
   methods: {
     addTodo(e) {
       if (e.target.value != "") {
-        this.$emit("input-add", e.target.value);
+        // this.$emit("input-add", e.target.value);
+        // this.content = "";
+        this.$store.commit('ADD_TODO', e.target.value);
         this.content = "";
       }
     },
@@ -31,7 +33,8 @@ export default {
       this.$emit("typing-todo", e.target.value);
     },
     Reset() {
-      this.$emit("reset-todo",'');
+      // this.$emit("reset-todo",'');
+      this.$store.commit('RESET_TODO');
     },
   },
 };

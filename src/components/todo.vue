@@ -1,6 +1,12 @@
 <template>
   <div style="display: flex; margin-bottom: 2px">
-    <input type="checkbox" name="check" id="" v-model="content.checked" />
+    <input
+      type="checkbox"
+      name="check"
+      id=""
+      v-model="content.checked"
+      @change="todoChecked"
+    />
     <span
       class="ml-3"
       style="flex-grow: 1"
@@ -15,21 +21,19 @@
 <script>
 export default {
   props: {
-    content: {
-      id: "",
-      title: "",
-      checked: false,
-    },
+    content: { type: Object },
   },
   data() {
     return {};
   },
   methods: {
     todoDel() {
-      this.$emit("del-button", this.content.id);
+      // this.$emit("del-button", this.content);
+      this.$store.commit("DEL_TODO", this.content.id);
     },
-    todoChecked() {
-      this.$emit("todo-Checked", this.content.id, this.content.checked);
+    todoChecked() {      
+      // this.$emit("todo-Checked", this.content.id, this.content.checked);
+      this.$store.commit("CHECKED_TODO", this.content.id, this.content.checked);
     },
   },
 };
