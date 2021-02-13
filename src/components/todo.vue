@@ -29,11 +29,17 @@ export default {
   methods: {
     todoDel() {
       // this.$emit("del-button", this.content);
-      this.$store.commit("DEL_TODO", this.content.id);
+      // this.$store.commit("DEL_TODO", this.content.id);
+      this.$store.dispatch("A_DEL_TODO", this.content.id);
     },
-    todoChecked() {      
+    todoChecked() {
       // this.$emit("todo-Checked", this.content.id, this.content.checked);
-      this.$store.commit("CHECKED_TODO", this.content.id, this.content.checked);
+      // this.$store.commit("CHECKED_TODO", this.content.id, this.content.checked);
+      this.$store.dispatch(
+        "A_CHECKED_TODO",
+        this.content.id,
+        this.content.checked
+      );
     },
   },
 };

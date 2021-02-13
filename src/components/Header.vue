@@ -25,7 +25,7 @@ export default {
       if (e.target.value != "") {
         // this.$emit("input-add", e.target.value);
         // this.content = "";
-        this.$store.commit('ADD_TODO', e.target.value);
+        this.$store.commit("ADD_TODO", e.target.value);
         this.content = "";
       }
     },
@@ -34,7 +34,8 @@ export default {
     },
     Reset() {
       // this.$emit("reset-todo",'');
-      this.$store.commit('RESET_TODO');
+      // this.$store.commit("RESET_TODO");
+      this.$store.dispatch("A_RESET_TODO");
     },
   },
 };

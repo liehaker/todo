@@ -1,23 +1,15 @@
 <template>
   <div>
-    <label style="font-size: 10px" for=""> {{ contents }} </label>
+    <label style="font-size: 10px" for=""> preView : {{ preText }} </label>
   </div>
 </template>
 
 <script>
 export default {
-  // props: {
-  //   preText: {
-  //     type: String,
-  //   },
-  // },
-  computed: {
-    contents() {
-      return this.$store.state.contents;
+  props: {
+    preText: {
+      type: String,
     },
   },
 };
 </script>
-
-<style>
-</style>

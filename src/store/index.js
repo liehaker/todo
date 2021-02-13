@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import axios from "axios";
 
 Vue.use(Vuex);
 
@@ -10,14 +11,15 @@ export default new Vuex.Store({
       {
         id: 1,
         title: "할일",
-        checked: true,
+        checked: true
       },
       {
         id: 2,
         title: "할일",
-        checked: false,
+        checked: false
       }
     ],
+    users: []
   },
   mutations: {
     //   DATA Change
@@ -25,17 +27,17 @@ export default new Vuex.Store({
       state.contents.push({
         id: Math.random(),
         title: value,
-        checked: false,
+        checked: false
       });
     },
     TOGGLE_TODO(state, { id, checked }) {
-      const index = state.contents.findIndex((i) => {
+      const index = state.contents.findIndex(i => {
         return i.id === id;
       });
       if (index != -1) state.contents[index].checked = !checked;
     },
     DEL_TODO(state, id) {
-      const index = state.contents.findIndex((content) => {
+      const index = state.contents.findIndex(content => {
         return content.id === id;
       });
       if (index != -1) {
@@ -43,19 +45,62 @@ export default new Vuex.Store({
       }
     },
     CHECKED_TODO(state, { id, checked }) {
-      const index = state.contents.findIndex((i) => {
+      const index = state.contents.findIndex(i => {
         return i.id === id;
       });
       if (index != -1) this.contents[index].checked = checked;
     },
     RESET_TODO(state) {
       state.contents.splice(0);
+    },
+    SET_USERS(state, payload) {
+      console.log("setuers", payload);
+      state.users = payload;
     }
   },
   actions: {
     //   Server 비동기
+    A_DEL_TODO(context, id) {
+      setTimeout(() => {
+        context.commit("DEL_TODO", id);
+      }, 2000);
+    },
+    A_RESET_TODO({ commit }) {
+      axios({
+        baseURL: "https://jsonplaceholder.typicode.com",
+        url: "/users",
+        method: "get",
+        headers: {},
+        params: {
+          username: "Antonette"
+        }
+      })
+        .then(res => {
+          commit("RESET_TODO");
+          commit("SET_USERS", res.data);
+          console.log("A_RESET_TODO Antonette", res.data);
+        })
+        .catch(error => {
+          console.log("A_RESET_TODO Antonette", error);
+        });
+    },
+    A_CHECKED_TODO({ commit }, payload) {
+      commit("CHECKED_TODO", payload);
+    },
+    A_SET_USERS(context) {
+      context.commit("SET_USERS");
+    }
   },
   getters: {
-    //   Computed
-  },
+    completed_count: state => {
+      const count = state.contents.filter(todo => {
+        return todo.checked === true;
+      }).length;
+
+      return count;
+    },
+    total_count: state => {
+      return state.contents.length;
+    }
+  }
 });
