@@ -36,11 +36,7 @@ export default {
       preText: "",
     };
   },
-  computed: {
-    // contents() {
-    //   return this.$Store.state.contents;
-    // },
-  },
+  computed: {},
   methods: {
     IputTyping(value) {
       this.preText = value;

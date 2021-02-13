@@ -17,9 +17,6 @@ export default {
   methods: {},
   created() {},
   computed: {
-    // contents() {
-    //   return this.$store.state.contents;
-    // },
     completed_count() {
       return this.$store.getters.completed_count;
     },

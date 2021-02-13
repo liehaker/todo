@@ -8,12 +8,6 @@
 import Todo from "@/components/todo";
 
 export default {
-  // props: {
-  //   contents: {
-  //     type: Array,
-  //     required: true
-  //   },
-  // },
   data() {
     return {};
   },
@@ -22,7 +16,7 @@ export default {
   },
   computed: {
     contents() {
-      return this.$store.state.contents;
+      return this.$store.state.contents.contents;
     },
   },
   methods: {},
