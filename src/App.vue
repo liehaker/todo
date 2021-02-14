@@ -2,7 +2,7 @@
   <div
     id="app"
     class="border rounded m-1 p-2 mx-auto"
-    style="background-color: gold; width: 50%"
+    style="background-color: gold; width: 90%"
   >
     <p class="ex1">work's liehacker</p>
     <Count />
