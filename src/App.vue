@@ -1,6 +1,10 @@
 <template>
-  <div id="app">
-    <p class="ex1">Work's list</p>
+  <div
+    id="app"
+    class="border rounded m-1 p-2 mx-auto"
+    style="background-color: gold; width: 50%"
+  >
+    <p class="ex1">work's liehacker</p>
     <Count />
     <Header @typing-todo="IputTyping" />
     <Preview
@@ -50,9 +54,15 @@ export default {
 </script>
 
 <style scoped>
-p.ex1 {
+p {
+  font-family: "Arial Black", sans-serif;
+  font-size: 36px;
+  font-weight: bold;
+  color: #ffffff;
+}
+.ex1 {
   text-align: center;
-  text-shadow: 2px 2px 5px red;
-  font-size: 20px;
+  text-shadow: 6px 2px 2px gray;
+  font-size: 1.5em;
 }
 </style>

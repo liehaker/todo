@@ -1,20 +1,22 @@
 <template>
-  <div style="display: flex; margin-bottom: 2px">
-    <input
-      type="checkbox"
-      name="check"
-      id=""
-      v-model="content.checked"
-      @change="todoChecked"
-    />
-    <span
-      class="ml-3"
-      style="flex-grow: 1"
-      :class="content.checked ? 'checked' : ''"
-      :style="content.checked ? 'text-decoration: line-through; ' : ''"
-      >{{ content.title }}
-    </span>
-    <button type="reset" v-on:click="todoDel">del</button>
+  <div>
+    <div class="shadow-lg p-1 mb-2 bg-body rounded d-flex input-group-sm">
+      <input
+        class="form-check-input me-1"
+        type="checkbox"
+        v-model="content.checked"
+        @change="todoChecked"
+      />
+      <span
+        class="p-1 flex-grow-1"
+        :class="content.checked ? 'checked' : ''"
+        :style="content.checked ? 'text-decoration: line-through; ' : ''"
+        >{{ content.title }}
+      </span>
+      <button class="btn btn-danger" id="show-modal" @click="todoDelWait">
+        del
+      </button>
+    </div>
   </div>
 </template>
 
@@ -27,6 +29,9 @@ export default {
     return {};
   },
   methods: {
+    todoDelWait() {
+      this.$emit("showModal", this.content.id);
+    },
     todoDel() {
       // this.$emit("del-button", this.content);
       // this.$store.commit("DEL_TODO", this.content.id);
@@ -44,12 +49,3 @@ export default {
   },
 };
 </script>
-<style>
-.normal {
-  font-style: normal;
-}
-.checked {
-  font-style: italic;
-  color: gray;
-}
-</style>

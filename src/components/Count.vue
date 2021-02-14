@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mb-1 badge bg-primary text-wrap" style="width: 7rem">
     <label style="font-size: 10px"
       >completed : {{ total_count }} / {{ completed_count }}</label
     >

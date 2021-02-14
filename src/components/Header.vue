@@ -1,15 +1,17 @@
 <template>
-  <div style="display: flex">
+  <div class="input-group input-group-sm mb-3">
+    <span class="input-group-text" id="inputGroup-sizing-sm">todo</span>
     <input
-      id="inputbox"
-      style="flex-grow: 1"
       type="text"
+      class="form-control"
+      aria-label="Sizing example input"
+      aria-describedby="inputGroup-sizing-sm"
       v-model="content"
       placeholder="입력하세요"
       @keyup="typeTodo"
       @keyup.enter="addTodo"
     />
-    <button id="button" @click="Reset">reset</button>
+    <button class="btn btn-danger mr-1" @click="Reset">reset</button>
   </div>
 </template>
 
