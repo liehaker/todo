@@ -1,6 +1,7 @@
 {
   "hosting": {
-    "public": "./dist",
+    "site": "liehacker-vue-todo",
+    "public": "./dist/",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -8,9 +9,8 @@
     ],
     "rewrites": [
       {
-        // "source": "**",
-        "source": "/todo",
-        "function": "todo",
+        "source": "**",
+        
         "destination": "/index.html"
       }
     ]
