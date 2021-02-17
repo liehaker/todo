@@ -8,7 +8,9 @@
     ],
     "rewrites": [
       {
-        "source": "**",
+        // "source": "**",
+        "source": "/todo",
+        "function": "todo",
         "destination": "/index.html"
       }
     ]
